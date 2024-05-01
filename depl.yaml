@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-01
+  name: web-01
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-01
+  template:
+    metadata:
+      labels:
+        app: web-01
+    spec:
+      containers:
+      - image: ngix
+        name: ngix
+        ports:
+        - containerPort: 80
