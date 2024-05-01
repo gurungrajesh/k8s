@@ -15,7 +15,7 @@ spec:
         app: web-01
     spec:
       containers:
-      - image: ngix
+      - image: nginx
         name: ngix
         ports:
         - containerPort: 80
