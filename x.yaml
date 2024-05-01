@@ -7,6 +7,6 @@ metadata:
   name: web
 spec:
   containers:
-  - image: php:8.2-apache
+  - image: php:7.4-apache
     name: web
 
