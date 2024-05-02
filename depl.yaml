@@ -13,29 +13,28 @@ spec:
         app: wordpress
     spec:
       containers:
-      - name: wordpress
-        image: wordpress:latest
-        ports:
-        - containerPort: 80
-        # Add liveness probe
-        livenessProbe:
-          httpGet:
-            path: /index.php
-            port: 80
-          initialDelaySeconds: 30
-          periodSeconds: 10
-        # Add readiness probe
-        readinessProbe:
-          httpGet:
-            path: /index.php
-            port: 80
-          initialDelaySeconds: 20
-          periodSeconds: 5
-        # Add startup probe
-        startupProbe:
-          httpGet:
-            path: /index.php
-            port: 80
-          failureThreshold: 30
-          periodSeconds: 10
-
+        - name: wordpress
+          image: wordpress:latest
+          ports:
+            - containerPort: 80
+          # Add liveness probe
+          livenessProbe:
+            httpGet:
+              path: /index.html
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          # Add readiness probe
+          readinessProbe:
+            httpGet:
+              path: /index.html
+              port: 80
+            initialDelaySeconds: 20
+            periodSeconds: 5
+          # Add startup probe
+          startupProbe:
+            httpGet:
+              path: /index.html
+              port: 80
+            failureThreshold: 30
+            periodSeconds: 10
