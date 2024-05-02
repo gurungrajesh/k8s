@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress
+  name: nginx-01
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: wordpress
+      app: nginx-01
   template:
     metadata:
       labels:
-        app: wordpress
+        app: nginx-01
     spec:
       containers:
-        - name: wordpress
+        - name: nginx-01
           image: nginx
           ports:
             - containerPort: 80
