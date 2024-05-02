@@ -1,21 +1,41 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: web-01
-  name: web-01
+  name: wordpress
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: web-01
+      app: wordpress
   template:
     metadata:
       labels:
-        app: web-01
+        app: wordpress
     spec:
       containers:
-      - image: nginx
-        name: ngix
+      - name: wordpress
+        image: wordpress:latest
         ports:
         - containerPort: 80
+        # Add liveness probe
+        livenessProbe:
+          httpGet:
+            path: /index.php
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        # Add readiness probe
+        readinessProbe:
+          httpGet:
+            path: /index.php
+            port: 80
+          initialDelaySeconds: 20
+          periodSeconds: 5
+        # Add startup probe
+        startupProbe:
+          httpGet:
+            path: /index.php
+            port: 80
+          failureThreshold: 30
+          periodSeconds: 10
+
