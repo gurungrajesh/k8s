@@ -20,21 +20,21 @@ spec:
           # Add liveness probe
           livenessProbe:
             httpGet:
-              path: /index.html
+              path: /index.php
               port: 80
             initialDelaySeconds: 30
             periodSeconds: 10
           # # Add readiness probe
           readinessProbe:
             httpGet:
-              path: /index.html
+              path: /index.php
               port: 80
             initialDelaySeconds: 20
             periodSeconds: 5
           # Add startup probe
           startupProbe:
             httpGet:
-              path: /index.html
+              path: /index.php
               port: 80
             failureThreshold: 30
             periodSeconds: 10
