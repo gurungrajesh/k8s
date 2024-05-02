@@ -34,7 +34,7 @@ spec:
           # Add startup probe
           startupProbe:
             httpGet:
-              path: /index.php
+              path: /index.html
               port: 80
             failureThreshold: 30
             periodSeconds: 10
