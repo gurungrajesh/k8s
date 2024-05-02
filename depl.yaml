@@ -14,26 +14,27 @@ spec:
     spec:
       containers:
         - name: wordpress
-          image: wordpress:latest
+          image: nginx
           ports:
             - containerPort: 80
           # Add liveness probe
           livenessProbe:
             httpGet:
-              path: /var/www/html/index.php
+              path: /index.html
               port: 80
             initialDelaySeconds: 30
             periodSeconds: 10
           # # Add readiness probe
           readinessProbe:
             httpGet:
-              path: /var/www/html/index.php
+              path: /index.html
               port: 80
             initialDelaySeconds: 20
             periodSeconds: 5
           # Add startup probe
           startupProbe:
-            tcpSocket:
+            httpGet:
+              path: /index.html
               port: 80
             failureThreshold: 30
             periodSeconds: 10
